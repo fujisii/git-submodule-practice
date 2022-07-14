@@ -100,4 +100,43 @@ $ git log --oneline
 
 # 過去のコミットにチェックアウトする
 $ git checkout 866910d
+M       bootstrap
+Note: switching to '866910d'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 866910d サブモジュールの作成
+
+# statusで確認すると、bootstrapディレクトリでdiffが発生した
+# checkoutが連動していないのが分かる
+$ git status
+HEAD detached at 866910d
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   bootstrap (new commits)
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+# submoduleを更新して連動させる
+$ git submodule update
+Submodule path 'bootstrap': checked out '8bb68b04b35765c30038923bd620ee28b21553c8'
+
+# statusを確認すると連動してるのが確認できた
+git status          
+HEAD detached at 866910d
+nothing to commit, working tree clean
 ```
