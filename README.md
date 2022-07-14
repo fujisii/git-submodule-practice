@@ -83,3 +83,21 @@ index 8bb68b0..85be61d 160000
 git add bootstrap
 git commit -m "Update submodule: Bootstrap"
 ```
+
+## 別のコミットをチェックアウトする & git submodule update
+
+
+- 過去のコミットにチェックアウトしたり別のブランチにチェックアウトした場合、「submoduleを使用しているリポジトリ」と「submoduleの内容」が連動しない点に注意
+- 連動させるための方法を以下に記す
+
+```
+# コミット時のログを表示する
+$ git log --oneline
+39aac1d (HEAD -> main, origin/main, origin/HEAD) Update readme
+668103d Update submodule: Bootstrap
+866910d サブモジュールの作成
+74c9f52 Initial commit
+
+# 過去のコミットにチェックアウトする
+$ git checkout 866910d
+```
